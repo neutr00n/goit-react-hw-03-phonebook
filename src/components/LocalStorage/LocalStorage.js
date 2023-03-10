@@ -10,12 +10,7 @@ export function setLocalStorage(key, value) {
 export function getLocalStorage(key) {
   try {
     const storageValue = localStorage.getItem(key);
-
-    if (!storageValue) {
-      return;
-    }
-
-    return JSON.parse(storageValue);
+    return storageValue === null ? [] : JSON.parse(storageValue);
   } catch (error) {
     throw new Error('Get state error: ', error.message);
   }
